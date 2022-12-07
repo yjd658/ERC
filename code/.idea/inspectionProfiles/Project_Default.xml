@@ -1,0 +1,45 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="2">
+            <item index="0" class="java.lang.String" itemvalue="torch" />
+            <item index="1" class="java.lang.String" itemvalue="torchvision" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="load_data.*" />
+          <option value="flat_main_v1.LSTM_SeqLabel_True" />
+          <option value="flat_main_v1.toy_ner_path" />
+          <option value="flat_main_v1.load_weibo_ner_old" />
+          <option value="flat_main_v1.weibo_ner_old_path" />
+          <option value="flat_main_v1.lk_word_path_2" />
+          <option value="V0.flat_main.LSTM_SeqLabel_True" />
+          <option value="V0.flat_main.toy_ner_path" />
+          <option value="V0.flat_main.lk_word_path_2" />
+          <option value="V0.add_lattice.Vocabulary" />
+          <option value="V1.flat_main.*" />
+          <option value="V0.flat_main.msra_ner_cn_path" />
+          <option value="V0.flat_main.Tester" />
+          <option value="V0.flat_main.time" />
+          <option value="V0.flat_main.ModelSaver" />
+          <option value="flat_main.LSTM_SeqLabel_True" />
+          <option value="flat_main.load_msra_ner_without_dev" />
+          <option value="flat_main.load_weibo_ner_old" />
+          <option value="flat_main.toy_ner_path" />
+          <option value="flat_main.weibo_ner_old_path" />
+          <option value="flat_main.lk_word_path_2" />
+          <option value="fastNLP_module.BertEmbedding" />
+          <option value="gcn_gru.optimizer.OptimizerAE" />
+          <option value="gcn_gru.optimizer.OptimizerVAE" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
