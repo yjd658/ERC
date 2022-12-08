@@ -31,4 +31,4 @@ Usage
 
 2.Put the data folder into the code folder.
 
-3.acorrding to the dataset task, modify the dataset path in the file run_train.py and run run_train.py
+3.acorrding to the dataset task, modify the dataset path in the file run_train.py and run run_train_ae.py
