@@ -1,6 +1,6 @@
 DialogueINAB
 =============
-The code and dataset for paper "DialogueINAB: A interaction network between interlocutors’ attitude and behavior for dialogue emotion detection"
+The code and dataset for paper "DialogueINAB: An interaction network between interlocutors’ attitude and behavior for dialogue emotion detection"
 
 Datasets
 ============
