@@ -132,9 +132,7 @@ if __name__ == '__main__':
     else:
         print('Running on CPU')
 
-    if args.tensorboard:
-        from tensorboardX import SummaryWriter
-        writer = SummaryWriter()
+    
 
     batch_size = args.batch_size
     cuda       = args.cuda
