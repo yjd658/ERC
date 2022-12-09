@@ -182,10 +182,10 @@ class DialogueINAB(nn.Module):
             for b in range(U_.size(0)):  # b=1--32次
                 for p in range(len(U_parties_)):  # 2次 p=0 or 1
                     index_i = torch.nonzero(qmask_[b][:, p]).squeeze(
-                        -1)  # p=0,index_i记录了在第i个场景中男人说话的序列，p=1，index_i记录了在第i个场景中女人说话的序列
+                        -1)  # p=0,index_i
                     if index_i.size(0) > 0:
                         U_parties_[p][b][:index_i.size(0)] = U_[b][
-                            index_i]  # 将每一个场景中男子说的话收集在一个parties中，U_parties_：2,32,110,100，但110那一维通常填不满，男人或女人在一个场景说了多少话就填上多少维
+                            index_i]  
             # AT=[(self.attitide(U_parties_[p])).unsqueeze(1) for p in range(len(U_parties_))]
 
             # for p in range(len(U_parties_)):
@@ -211,7 +211,7 @@ class DialogueINAB(nn.Module):
                 for i in range(qmask.size(0)):
                     for j in range(qmask.size(1)):
                         if qmask[i, j, 0] == 0:
-                            Spcode[i, j, :] = -1
+                            Spcode[i, j, :] = 0
             # U_s1=U_s
             # U_p1=U_p
             # U_p = self.multiattn(U_p)
