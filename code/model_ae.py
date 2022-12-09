@@ -232,27 +232,7 @@ class DialogueINAB(nn.Module):
             # U_s = U_s.transpose(0, 1)
 
             U_ln=torch.cat((U_n,U_p),dim=-1)
-        elif self.base_model == 'GRU':
-            U_, qmask_ = U.transpose(0, 1), qmask.transpose(0, 1)
-            U_p_ = torch.zeros(U_.size()[0], U_.size()[1], 400).type(U.type())
-            U_parties_ = [torch.zeros_like(U_).type(U_.type()) for _ in range(self.n_speakers)]  # default 2
-            for b in range(U_.size(0)):
-                for p in range(len(U_parties_)):
-                    index_i = torch.nonzero(qmask_[b][:, p]).squeeze(-1)
-                    if index_i.size(0) > 0:
-                        U_parties_[p][b][:index_i.size(0)] = U_[b][index_i]
-            E_parties_ = [self.rnn_parties(U_parties_[p].transpose(0, 1))[0].transpose(0, 1) for p in
-                          range(len(U_parties_))]
-
-            for b in range(U_p_.size(0)):
-                for p in range(len(U_parties_)):
-                    index_i = torch.nonzero(qmask_[b][:, p]).squeeze(-1)
-                    if index_i.size(0) > 0: U_p_[b][index_i] = E_parties_[p][b][:index_i.size(0)]
-            U_p = U_p_.transpose(0, 1)
-            U_s, hidden = self.rnn(U)
-        elif self.base_model == 'None':
-            # TODO
-            U_s = self.base_linear(U)
+        
 
 
         return U_ln
