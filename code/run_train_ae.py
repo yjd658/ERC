@@ -110,9 +110,9 @@ if __name__ == '__main__':
                         help='learning rate')
     parser.add_argument('--l2', type=float, default=0.0002, metavar='L2',
                         help='L2 regularization weight')
-    parser.add_argument('--rec-dropout', type=float, default=0.1,
+    parser.add_argument('--rec-dropout', type=float, default=0.5,
                         metavar='rec_dropout', help='rec_dropout rate')
-    parser.add_argument('--dropout', type=float, default=0.3, metavar='dropout',
+    parser.add_argument('--dropout', type=float, default=0.2, metavar='dropout',
                         help='dropout rate')
     parser.add_argument('--batch-size', type=int, default=32, metavar='BS',
                         help='batch size')
