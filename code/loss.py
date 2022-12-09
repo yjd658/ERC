@@ -20,8 +20,8 @@ class FocalLoss(nn.Module):
         target = target.view(-1, 1)
 
 
-        logpt = input.gather(1, target).view(-1) #input的每一维向量形如[1.9,1.3,1.2,1.8,1.6,1.5],该步目的在于如果在第n维，target值为5，则选input第n维引索为5的值值1.5
-        pt = Variable(logpt.data.exp()) #variable是一种可以不断变化的变量
+        logpt = input.gather(1, target).view(-1) 
+        pt = Variable(logpt.data.exp())
 
         if self.alpha is not None:
             if self.alpha.type() != input.data.type():
