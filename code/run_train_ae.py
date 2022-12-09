@@ -85,9 +85,7 @@ def train_or_eval_model(model, loss_function, dataloader, epoch, optimizer=None,
         losses.append(loss.item()*masks[-1].sum())
         if train:
             loss.backward()
-            if args.tensorboard:
-                for param in model.named_parameters():
-                    writer.add_histogram(param[0], param[1].grad, epoch)
+        
             optimizer.step()
 
     if preds!=[]:
