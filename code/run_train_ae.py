@@ -114,17 +114,13 @@ if __name__ == '__main__':
                         help='L2 regularization weight')
     parser.add_argument('--rec-dropout', type=float, default=0.1,
                         metavar='rec_dropout', help='rec_dropout rate')
-    parser.add_argument('--dropout', type=float, default=0.1, metavar='dropout',
+    parser.add_argument('--dropout', type=float, default=0.3, metavar='dropout',
                         help='dropout rate')
-    parser.add_argument('--batch-size', type=int, default=16, metavar='BS',
+    parser.add_argument('--batch-size', type=int, default=32, metavar='BS',
                         help='batch size')
     parser.add_argument('--epochs', type=int, default=120, metavar='E',
                         help='number of epochs')
-    parser.add_argument('--active-listener', action='store_true', default=False,
-                        help='active listener')
-    parser.add_argument('--attention', default='simple', help='Attention type')
-    parser.add_argument('--tensorboard', action='store_true', default=False,
-                        help='Enables tensorboard log')
+    
     parser.add_argument('--attribute', type=int, default=3, help='AVEC attribute')
     args = parser.parse_args()
 
@@ -141,7 +137,6 @@ if __name__ == '__main__':
         writer = SummaryWriter()
 
     batch_size = args.batch_size
-    n_classes  = 6
     cuda       = args.cuda
     n_epochs   = args.epochs
 
@@ -149,7 +144,7 @@ if __name__ == '__main__':
 
     model = AVECModel(
                     attr=args.attribute,
-                    listener_state=args.active_listener,
+                
                     dropout_rec=args.rec_dropout,
                     dropout=args.dropout)
     if cuda:
@@ -178,18 +173,10 @@ if __name__ == '__main__':
             best_loss, best_label, best_pred, best_mask, best_pear =\
                     test_loss, test_label, test_pred, test_mask, test_pear
 
-        if args.tensorboard:
-            writer.add_scalar('test: loss',test_loss,e)
-            writer.add_scalar('train: loss',train_loss,e)
-            writer.add_scalar('test: mae',test_mae,e)
-            writer.add_scalar('train: mae',train_mae,e)
-            writer.add_scalar('test: pear',test_pear,e)
-            writer.add_scalar('train: pear',train_pear,e)
+        
         print('epoch {} train_loss {} train_mae {} train_pear {} valid_loss {} valid_mae {} valid_pear {} test_loss {} test_mae {} test_pear {} time {}'.\
                 format(e+1, train_loss, train_mae, train_pear, valid_loss, valid_mae,\
                         valid_pear, test_loss, test_mae, test_pear, round(time.time()-start_time,2)))
-    if args.tensorboard:
-        writer.close()
 
     print('Test performance..')
     print('Loss {} MAE {} r {}'.format(best_loss,
