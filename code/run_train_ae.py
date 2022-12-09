@@ -169,7 +169,7 @@ if __name__ == '__main__':
         valid_loss, valid_mae, valid_pear,_,_,_ = train_or_eval_model(model, loss_function, valid_loader, e)
         test_loss, test_mae, test_pear, test_label, test_pred, test_mask = train_or_eval_model(model, loss_function, test_loader, e)
 
-        if best_loss == None or best_loss > test_loss:
+        if best_loss == None or best_loss > valid_loss:
             best_loss, best_label, best_pred, best_mask, best_pear =\
                     test_loss, test_label, test_pred, test_mask, test_pear
 
